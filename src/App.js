@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component, useContext } from "react";
+import UserFinder from "./components/UserFinder";
+import UsersContext from "./store/users-context";
+
+// export default class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <UserFinder />
+//       </div>
+//     );
+//   }
+// }
+
+const DUMMY_USERS = [
+  { id: "u1", name: "Max" },
+  { id: "u2", name: "Manuel" },
+  { id: "u3", name: "Julie" },
+];
 
 function App() {
+  const usersContext = {
+    users: DUMMY_USERS,
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UsersContext.Provider value={usersContext}>
+      <UserFinder />
+    </UsersContext.Provider>
   );
 }
 
