@@ -9,6 +9,12 @@ class Users extends Component {
     this.state = { showUsers: true };
   }
 
+  componentDidUpdate() {
+    if (this.props.users.length == 0) {
+      throw new Error("No users provided");
+    }
+  }
+
   toggleUsersHandler = () => {
     //Do not overrite the state, wrather react only changed the specified value
     this.setState((currentState) => ({ showUsers: !currentState.showUsers }));
